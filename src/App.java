@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 import model.Cliente;
@@ -131,7 +134,10 @@ public class App {
     }
 
     public static void comprarItem() {
+    
         System.out.println(pessoa);
+        System.out.print("Data e hora do registro do pedido: ");
+        apresentaDataHora();
         carrinho.exibeTodosOsProdutos();
         System.out.printf("\nTotal: R$:%.2f \n", carrinho.Total());
         System.out.println();
@@ -141,7 +147,10 @@ public class App {
         System.out.println("---------------------------------------------");
     }
 
-
-
+    public static void apresentaDataHora() {
+        LocalDateTime d02 = LocalDateTime.now();
+        DateTimeFormatter fmt3 = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm").withZone(ZoneId.systemDefault());
+        System.out.println(fmt3.format(d02));
+    }
 }
 
